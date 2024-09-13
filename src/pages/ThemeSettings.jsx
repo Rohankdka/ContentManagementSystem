@@ -54,13 +54,13 @@ const ThemeSettings = () => {
       <form onSubmit={handleSubmit} className="mb-4">
         <FormSelect 
           label="Theme"
-          options={themes.map(theme => ({ id: theme.themeId, name: theme.themeName }))}
+          options={themes.map(theme => ({ value: theme.themeId, label: theme.themeName }))}
           value={newSetting.themeId}
           onChange={(e) => setNewSetting({ ...newSetting, themeId: e.target.value })}
         />
         <FormSelect 
           label="Web Heading"
-          options={webHeadings.map(heading => ({ id: heading.headingId, name: heading.headingName }))}
+          options={webHeadings.map(heading => ({ value: heading.headingId, label: heading.headingName }))}
           value={newSetting.headingId}
           onChange={(e) => setNewSetting({ ...newSetting, headingId: e.target.value })}
         />

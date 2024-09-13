@@ -19,10 +19,8 @@ const UserList = () => {
   }, []);
 
   const handleChange = (e) => {
-    setNewUser({
-      ...newUser,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setNewUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -49,9 +47,14 @@ const UserList = () => {
         <FormInput label="Password" type="password" name="userPassword" value={newUser.userPassword} onChange={handleChange} />
         <FormSelect 
           label="Role" 
-          options={[{id: 'Admin', name: 'Admin'}, {id: 'Editor', name: 'Editor'}, {id: 'SuperAdmin', name: 'SuperAdmin'}]}
+          name="userRole"
+          options={[
+            { value: 'Admin', label: 'Admin' },
+            { value: 'Editor', label: 'Editor' },
+            { value: 'SuperAdmin', label: 'SuperAdmin' }
+          ]}
           value={newUser.userRole}
-          onChange={(e) => setNewUser({ ...newUser, userRole: e.target.value })}
+          onChange={handleChange}
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add User</button>
       </form>

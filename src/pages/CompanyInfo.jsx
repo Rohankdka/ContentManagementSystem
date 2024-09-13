@@ -71,20 +71,17 @@ const CompanyInfo = () => {
         <FormInput label="Site URL" type="text" name="companySiteUrl" value={newCompany.companySiteUrl} onChange={handleChange} />
         <FormInput label="Email Address" type="email" name="companyEmailAddress" value={newCompany.companyEmailAddress} onChange={handleChange} />
         <FormInput label="Developed By" type="text" name="developedBy" value={newCompany.developedBy} onChange={handleChange} />
-        <div className="mb-4">
-          <label className="block text-gray-700">Is Copyright to Developer:</label>
-          <input
-            type="checkbox"
-            name="isCopyrightToDeveloper"
-            checked={newCompany.isCopyrightToDeveloper}
-            onChange={(e) => setNewCompany({ ...newCompany, isCopyrightToDeveloper: e.target.checked })}
-            className="ml-2"
-          />
-        </div>
+        <FormInput 
+          label="Copyright To Developer" 
+          type="checkbox" 
+          name="isCopyrightToDeveloper" 
+          checked={newCompany.isCopyrightToDeveloper} 
+          onChange={(e) => setNewCompany({ ...newCompany, isCopyrightToDeveloper: e.target.checked })}
+        />
         <FormInput label="Developer Site" type="text" name="developerSite" value={newCompany.developerSite} onChange={handleChange} />
         <FormSelect 
-          label="Theme" 
-          options={themes.map(theme => ({ id: theme.themeId, name: theme.themeName }))}
+          label="Theme"
+          options={themes.map(theme => ({ value: theme.themeId, label: theme.themeName }))}
           value={newCompany.themeId}
           onChange={(e) => setNewCompany({ ...newCompany, themeId: e.target.value })}
         />
@@ -94,10 +91,17 @@ const CompanyInfo = () => {
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Company ID</th>
-            <th className="py-2 px-4 border-b">Company Name</th>
+            <th className="py-2 px-4 border-b">Name</th>
             <th className="py-2 px-4 border-b">Short Name</th>
             <th className="py-2 px-4 border-b">Address</th>
-            {/* Add more headers as needed */}
+            <th className="py-2 px-4 border-b">Primary Phone</th>
+            <th className="py-2 px-4 border-b">Secondary Phone</th>
+            <th className="py-2 px-4 border-b">Site URL</th>
+            <th className="py-2 px-4 border-b">Email</th>
+            <th className="py-2 px-4 border-b">Developed By</th>
+            <th className="py-2 px-4 border-b">Copyright To Developer</th>
+            <th className="py-2 px-4 border-b">Developer Site</th>
+            <th className="py-2 px-4 border-b">Theme ID</th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +111,14 @@ const CompanyInfo = () => {
               <td className="py-2 px-4 border-b">{company.companyName}</td>
               <td className="py-2 px-4 border-b">{company.companyShortName}</td>
               <td className="py-2 px-4 border-b">{company.companyAddress}</td>
-              {/* Add more columns as needed */}
+              <td className="py-2 px-4 border-b">{company.companyPrimaryPhone}</td>
+              <td className="py-2 px-4 border-b">{company.companySecondryPhone}</td>
+              <td className="py-2 px-4 border-b">{company.companySiteUrl}</td>
+              <td className="py-2 px-4 border-b">{company.companyEmailAddress}</td>
+              <td className="py-2 px-4 border-b">{company.developedBy}</td>
+              <td className="py-2 px-4 border-b">{company.isCopyrightToDeveloper ? 'Yes' : 'No'}</td>
+              <td className="py-2 px-4 border-b">{company.developerSite}</td>
+              <td className="py-2 px-4 border-b">{company.themeId}</td>
             </tr>
           ))}
         </tbody>

@@ -7,6 +7,9 @@ import CompanyInfo from './pages/CompanyInfo';
 import Theme from './pages/Theme';
 import ThemeSettings from './pages/ThemeSettings';
 import Navbar from './components/Navbar';
+import AdminPage from './pages/AdminPage';
+import SuperadminPage from './pages/SuperadminPage';
+import EditorPage from './pages/EditorPage';
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
           <Route path="/company" element={<CompanyInfo />} />
           <Route path="/themes" element={<Theme />} />
           <Route path="/theme-settings" element={<ThemeSettings />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/superadmin" element={<SuperadminPage />} />
+          <Route path="/editor" element={<EditorPage />} />
         </Routes>
       </div>
     </Router>
